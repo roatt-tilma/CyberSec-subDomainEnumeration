@@ -18,18 +18,18 @@ type Log struct {
 // Info is used for logging information
 // or updates
 func Info(msg string) {
-	color.Cyan(fmt.Sprintf("\r[bird] %-50s ", msg))
+	color.Cyan(fmt.Sprintf("\r[enumerator] %-50s ", msg))
 }
 
 // Error is used to log error messages
 func Error(msg string) {
-	color.Red(fmt.Sprintf("\r[bird] %-50s ", msg))
+	color.Red(fmt.Sprintf("\r[enumerator] %-50s ", msg))
 }
 
 // Fatal is used to log error messages
 // and exit the process
 func Fatal(msg string) {
-	color.HiRed(fmt.Sprintf("\r[bird] %-50s ", msg))
+	color.HiRed(fmt.Sprintf("\r[enumerator] %-50s ", msg))
 	os.Exit(1)
 }
 

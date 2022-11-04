@@ -6,9 +6,9 @@ import (
 	"os"
 	"sync"
 
-	"github.com/roerohan/bird/brutus"
-	"github.com/roerohan/bird/logger"
-	"github.com/roerohan/bird/progress"
+	"github.com/roatt-tilma/CyberSec-subDomainEnumeration/brutus"
+	"github.com/roatt-tilma/CyberSec-subDomainEnumeration/logger"
+	"github.com/roatt-tilma/CyberSec-subDomainEnumeration/progress"
 )
 
 func main() {

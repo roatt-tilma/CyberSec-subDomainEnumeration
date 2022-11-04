@@ -5,7 +5,7 @@ import (
 	"net/http"
 	"strconv"
 
-	"github.com/roerohan/bird/logger"
+	"github.com/roatt-tilma/CyberSec-subDomainEnumeration/logger"
 )
 
 // Brute is a struct to define

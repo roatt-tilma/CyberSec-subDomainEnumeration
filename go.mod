@@ -1,4 +1,4 @@
-module github.com/roerohan/bird
+module github.com/roatt-tilma/CyberSec-subDomainEnumeration
 
 go 1.15
 

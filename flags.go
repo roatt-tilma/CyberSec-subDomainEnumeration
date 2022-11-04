@@ -4,7 +4,7 @@ import (
 	"flag"
 	"strings"
 
-	"github.com/roerohan/bird/logger"
+	"github.com/roatt-tilma/CyberSec-subDomainEnumeration/logger"
 )
 
 // BirdHome stores the home directory where bird is installed

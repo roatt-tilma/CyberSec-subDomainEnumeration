@@ -3,7 +3,7 @@ package progress
 import (
 	"fmt"
 
-	"github.com/roerohan/bird/logger"
+	"github.com/roatt-tilma/CyberSec-subDomainEnumeration/logger"
 )
 
 // Progress is a struct to describe
