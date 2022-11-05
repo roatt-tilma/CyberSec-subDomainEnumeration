@@ -4,7 +4,9 @@ import (
 	"bufio"
 	"flag"
 	"os"
+	"strconv"
 	"sync"
+	"time"
 
 	"github.com/roatt-tilma/CyberSec-subDomainEnumeration/brutus"
 	"github.com/roatt-tilma/CyberSec-subDomainEnumeration/logger"
@@ -24,12 +26,37 @@ func main() {
 		os.Exit(1)
 	}
 
+	if enumerationtype > 1 || enumerationtype < 0 {
+		enumerationtype = 0
+	}
+
+	if cores < 1 || cores > 8 {
+		cores = 1
+	}
+
 	if len(success) == 0 {
 		success = append(success, "200")
 	}
 
-	workers := 4
-	logger.Info("Starting 4 worker threads...")
+	now := time.Now()
+	defer func() {
+		duration := time.Since(now)
+		logger.Info("Execution time: " + duration.String())
+	}()
+
+	workers := cores
+
+	if enumerationtype == 0 {
+		logger.SubDomain()
+	} else {
+		logger.Directory()
+	}
+
+	if workers == 1 {
+		logger.Info("Starting " + strconv.Itoa(workers) + " worker thread...")
+	} else {
+		logger.Info("Starting " + strconv.Itoa(workers) + " worker threads...")
+	}
 
 	successCodes := make(map[string]bool)
 	for _, code := range success {
@@ -73,7 +100,7 @@ func main() {
 	for scanner.Scan() {
 		text := scanner.Text()
 		for _, url := range urls {
-			c <- brutus.New(url, text)
+			c <- brutus.New(url, text, enumerationtype)
 		}
 
 		count += len(text) + 1
@@ -83,4 +110,6 @@ func main() {
 	close(c)
 
 	wg.Wait()
+
+	// logger.Info("\nEnumeration: " + strconv.Itoa(count) + "\nTotal: " + strconv.FormatInt(size-1, 10))
 }

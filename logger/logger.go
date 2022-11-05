@@ -41,14 +41,25 @@ func Print(msg string) {
 }
 
 // Welcome displays the welcome message for bird
-func Welcome() {
+func Directory() {
 	color.Green(`
 _\|      __       |/_
 _-  \_  _/"->   _/  -_
 -_    ''(   )'-'    _-
 '=.__.=-(   )-=.__.='
         |/-\|
-_ _ _ _ Y   Y _ _bird
+_ _ _ _ Y   Y _ _Directory Enumeration
+	`)
+}
+
+func SubDomain() {
+	color.Green(`
+_\|      __       |/_
+_-  \_  _/"->   _/  -_
+-_    ''(   )'-'    _-
+'=.__.=-(   )-=.__.='
+        |/-\|
+_ _ _ _ Y   Y _ _SubDomain Enumeration
 	`)
 }
 

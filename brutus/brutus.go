@@ -11,21 +11,30 @@ import (
 // Brute is a struct to define
 // a single job to work on
 type Brute struct {
-	URL  string
-	Word string
+	URL             string
+	Word            string
+	EnumerationType int
 }
 
 // New returns a new Brute object
-func New(url string, word string) *Brute {
+func New(url string, word string, enumerationtype int) *Brute {
 	return &Brute{
-		URL:  url,
-		Word: word,
+		URL:             url,
+		Word:            word,
+		EnumerationType: enumerationtype,
 	}
 }
 
 // FormURL forms a URL from a brute object
 func (b *Brute) FormURL() string {
-	return fmt.Sprintf("%s/%s", b.URL, b.Word)
+
+	if b.EnumerationType == 0 {
+		return fmt.Sprintf("https://%s.%s", b.Word, b.URL)
+	} else if b.EnumerationType == 1 {
+		return fmt.Sprintf("https://%s/%s", b.URL, b.Word)
+	}
+
+	return ""
 }
 
 // Try tries to visit a Brute URL and checks the status code
@@ -36,6 +45,8 @@ func (b *Brute) Try(success map[string]bool, logs chan logger.Log) {
 	if err != nil {
 		logger.Error("Error occurred while visiting " + url)
 	}
+
+	defer resp.Body.Close()
 
 	statusCode := strconv.Itoa(resp.StatusCode)
 

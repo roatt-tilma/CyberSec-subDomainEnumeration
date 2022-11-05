@@ -8,3 +8,31 @@ subdomain enumeration as well as directory enumeration efficiently and in a fast
 this we can use open source repositories like ‘crt.sh’ and brute-force. We plan to build a CLI tool
 using Golang.
 
+```
+Compilation
+
+go build -o ./bin/enumerator
+
+```
+
+
+```
+Usage of enumerator:
+
+    -s value
+        Status code for success, default 200
+    -u value
+        Target URL to be bruteforced [required]
+    -w string
+        Path to wordlist [required]
+    -c value
+        Number of cores, default 1 (1 to 8)
+    -t value
+        Type of enumeration, default 0 (0 -> sub-domain, 1 -> directory)
+```
+
+```
+Example:
+
+    ./bin/enumerator -u google.com -s 200 -c 8 -t 1 -w ./wordlist/common.txt
+```
