@@ -43,10 +43,11 @@ func (b *Brute) Try(success map[string]bool, logs chan logger.Log) {
 
 	resp, err := http.Get(url)
 	if err != nil {
-		logger.Error("Error occurred while visiting " + url)
+		//logger.Error("Error occurred while visiting " + url)
+		return
 	}
 
-	defer resp.Body.Close()
+	// defer resp.Body.Close()
 
 	statusCode := strconv.Itoa(resp.StatusCode)
 
